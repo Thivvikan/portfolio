@@ -24,11 +24,10 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicon (served from public/) -->
-  <!-- Use the deployed favicon.svg and include PNG fallbacks for compatibility -->
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="/Thivvikan.png" type="image/png" />
+  <!-- Use SVG favicon only so browsers prefer the vector icon. Keep mask-icon for Safari. -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
   <link rel="shortcut icon" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/Thivvikan.png" />
+  <link rel="mask-icon" href="/favicon.svg" color="#7c5cff" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
