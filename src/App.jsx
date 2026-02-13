@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import {
   FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaWhatsapp, FaExternalLinkAlt,
   FaCode, FaDatabase, FaTools, FaLayerGroup, FaServer, FaLaptopCode,
-  FaJava, FaPython, FaPhp, FaJs, FaReact, FaLeaf, FaMicrosoft, FaBolt, FaDocker
+  FaJava, FaPython, FaPhp, FaJs, FaReact, FaLeaf, FaMicrosoft, FaBolt, FaDocker,
+  FaBars, FaTimes
 } from 'react-icons/fa'
 
 const projects = [
@@ -69,31 +70,67 @@ export default function App() {
 }
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
   return (
     <header className="header">
       <div className="container-inner">
         <div className="header-content">
-          {/* Left: Profile */}
-          <Profile />
+          {/* Mobile Header Top Row */}
+          <div className="header-mobile-top">
+            <div className="mobile-profile">
+              <Profile compact={true} />
+            </div>
+
+            <button
+              className="mobile-menu-toggle"
+              onClick={toggleMenu}
+              aria-label="Toggle navigation"
+            >
+              {isMenuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
+
+          {/* Left: Profile (Desktop) */}
+          <div className="desktop-profile">
+            <Profile />
+          </div>
 
           {/* Center: Name, Subtitle & Navigation */}
-          <div className="header-center">
+          <div className={`header-center ${isMenuOpen ? 'open' : ''}`}>
             <div className="header-text">
               <h1>Thivvikan Premasri</h1>
               <p className="subtitle">Early-career Software Engineer - Backend & Full-Stack</p>
             </div>
             <nav className="nav">
-              <a href="#about">About</a>
-              <a href="#skills">Skills</a>
-              <a href="#experience">Experience</a>
-              <a href="#projects">Projects</a>
-              <a href="#education">Education</a>
-              <a href="#contact">Contact</a>
+              <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
+              <a href="#skills" onClick={() => setIsMenuOpen(false)}>Skills</a>
+              <a href="#experience" onClick={() => setIsMenuOpen(false)}>Experience</a>
+              <a href="#projects" onClick={() => setIsMenuOpen(false)}>Projects</a>
+              <a href="#education" onClick={() => setIsMenuOpen(false)}>Education</a>
+              <a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a>
             </nav>
+
+            {/* Mobile Actions in Menu */}
+            <div className="mobile-actions">
+              <a
+                href="https://wa.me/94765893654?text=Hi%20Thivvikan,%20I'm%20interested%20in%20hiring%20you."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-hire full-width"
+              >
+                <FaWhatsapp className="btn-icon" />
+                <span>Hire Me</span>
+              </a>
+            </div>
           </div>
 
-          {/* Right: CTA Button */}
-          <div className="header-actions">
+          {/* Right: CTA Button (Desktop) */}
+          <div className="header-actions desktop-actions">
             <a
               href="https://wa.me/94765893654?text=Hi%20Thivvikan,%20I'm%20interested%20in%20hiring%20you."
               target="_blank"
