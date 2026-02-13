@@ -25,9 +25,10 @@
 
   <!-- Favicon (served from public/) -->
   <!-- Use SVG favicon only so browsers prefer the vector icon. Keep mask-icon for Safari. -->
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
-  <link rel="shortcut icon" href="/favicon.svg" />
-  <link rel="mask-icon" href="/favicon.svg" color="#7c5cff" />
+  <!-- Use relative paths so favicon works when the site is hosted under a subpath -->
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" sizes="any" />
+  <link rel="shortcut icon" href="./favicon.svg" />
+  <link rel="mask-icon" href="./favicon.svg" color="#7c5cff" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
